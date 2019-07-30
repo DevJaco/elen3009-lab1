@@ -18,7 +18,9 @@ public:
 	Screen(string::size_type height, string::size_type width, char bkground = '#');
 
 	// get the Screen's height
-	string::size_type height() const { return height_; }
+	string::size_type height() const { return height_; } //The const keyword in this line indicates that the output is constant. 
+														 //This means that when this gets called and saved to a variable, that variable's value cannot be changed.
+	
 	// get the Screen's width
 	string::size_type width() const { return width_; }
 
@@ -45,7 +47,9 @@ public:
 	// write a character on the screen at the current cursor position
 	void set( char ch );
 	// write a string of characters on the screen starting at the current cursor position
-	void set( const string& s );
+	void set( const string& s ); //The const in this line indicates that the parameter passed in will be constant.
+								 //This means that within the function the value of the variable s cannot be changed. 
+								 //ie the value is being passed by reference but is also immutable.
 	// overwrite the entire screen with the specified character
 	void clear( char bkground = '#');
 
@@ -59,7 +63,7 @@ public:
 private:
 	// constants
 	// 0 represents the top-left screen element
-	const string::size_type TOP_LEFT = 0;
+	const string::size_type TOP_LEFT = 0; //The const here indicates that the variable is always immutable.
 	
 	// private member functions
 	string::size_type remainingSpace() const;
