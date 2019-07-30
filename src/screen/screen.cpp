@@ -65,6 +65,40 @@ void Screen::move( string::size_type row, string::size_type col )
 	return;
 }
 
+void Screen::move(Direction dir) //No however it makes using the class much easier, 
+								 //instead of having to call lots of different functions, the client can use one function to move in any direction. 
+								 //Similarly it makes moving the cursor using constructs like loops easier.
+{
+	switch(dir)
+	{
+		case Direction::HOME: 
+		home();
+		break;
+		
+		case Direction::FORWARD:
+		forward();
+		break;
+		
+		case Direction::BACK: 
+		back();
+		break; 
+		
+		case Direction::UP:
+		up();
+		break;
+ 
+		case Direction::DOWN: 
+		down();
+		break; 
+		
+		case Direction::END:
+		end();
+		break;
+	}
+	
+
+}
+
 char Screen::get( string::size_type row, string::size_type col )
 {
 	// position cursor_

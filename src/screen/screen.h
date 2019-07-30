@@ -14,6 +14,7 @@ using namespace std;
 
 class Screen {
 public:
+	enum class Direction {HOME,FORWARD,BACK,UP,DOWN,END};
 	// Screen's constructor
 	Screen(string::size_type height, string::size_type width, char bkground = '#');
 
@@ -38,6 +39,7 @@ public:
 	void down();
 	// move the cursor to the specified row and column
 	void move(string::size_type row, string::size_type col);
+	void move(Direction dir);
 
 	// get the character at the cursor's current position
 	char get() const { return _screen[cursor_]; }
@@ -61,6 +63,8 @@ public:
 	bool checkRange(string::size_type row, string::size_type col) const;
 
 private:
+
+	
 	// constants
 	// 0 represents the top-left screen element
 	const string::size_type TOP_LEFT = 0; //The const here indicates that the variable is always immutable.
