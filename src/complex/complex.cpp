@@ -1,5 +1,7 @@
 // complex.cpp
 // Multiplying complex numbers
+// complex.cpp
+// Multiplying complex numbers
 
 #include <iostream>	// contains the definition of cout, endl
 #include <complex>	// contains the complex class definition
@@ -18,7 +20,8 @@ int main()
 			<< " + " << answer.imag() << "j" 
 			<< endl	<< endl;
 
-	// answer++;
+	//answer++; 
+	//This doesn't work because the postfix ++ operator is not defined for the complex type
 
 	return 0;
 }
