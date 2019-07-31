@@ -30,24 +30,40 @@ void Screen::back()
 	return;
 }
 
+// move cursor_ up one row of screen
 void Screen::up()
-{   // move cursor_ up one row of screen
-	// do not wrap around
-	if ( row() == 1 ) // at top?
-		cerr << "Screen::up - Cannot wrap around in a vertical direction" << endl;
+{   
+	if ( row() == 1 ) 
+    {
+		if(cursor_ == TOP_LEFT)
+        {
+			end();
+		}
+		else {
+			cursor_ = width_ * height_ + (cursor_ - width_) - 1;
+		}
+	}
 	else
 		cursor_ -= width_;
 
 	return;
 }
 
+// move cursor_ down one row of screen
 void Screen::down()
-{   // move cursor_ down one row of screen
-	// do not wrap around
-	if ( row() == height_ ) // at bottom?
-		cerr << "Screen::down - Cannot wrap around in a vertical direction" << endl;
-	else
-		cursor_ += width_;
+{   
+    if ( row() == height_ )
+    { 
+		if(cursor_ == _screen.size())
+        {
+			home();
+		}
+		else 
+        {
+			cursor_ = (cursor_ + width_) - (width_ * height_ )  + 1;
+		}
+    }
+	else cursor_ += width_;
 
 	return;
 }
@@ -209,4 +225,3 @@ string::size_type Screen::row() const
 {   // return current row
 	return (cursor_ + width_)/width_;
 }
-
