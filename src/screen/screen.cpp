@@ -205,6 +205,33 @@ void Screen::display() const
 	return;
 }
 
+void Screen::emptySquare(string::size_type row, string::size_type col, string::size_type side)
+{   // Error checking, checks initial position as well as end positions of the empty sqaure
+    clear(' ');
+    auto rowEnd = row + side - 1;
+    auto colEnd = col + side - 1;
+    
+    if(checkRange(row, col) && checkRange(rowEnd, colEnd))
+    {
+        for(string::size_type i = row; i < row + side; i++)
+        {
+                for(string::size_type j = col; j < col + side; j++)
+                {
+                    move(i,j);
+                    if(i == row || i == rowEnd || j == col || j == colEnd)
+                    {
+                    set('X');
+                    }
+                    else
+                    {
+                    set(' ');
+                }
+                }
+        }
+    }
+    return;
+}
+
 bool Screen::checkRange( string::size_type row, string::size_type col ) const
 {   // validate coordinates
 	if (row < 1 || row > height_ || col < 1 || col > width_)
@@ -225,3 +252,4 @@ string::size_type Screen::row() const
 {   // return current row
 	return (cursor_ + width_)/width_;
 }
+

@@ -61,6 +61,8 @@ public:
 	void display() const;
 	// check whether the specified co-ordinates lie within the screen
 	bool checkRange(string::size_type row, string::size_type col) const;
+    // draw an empty square on the screen starting at position row,col with side length side
+    void emptySquare(string::size_type row, string::size_type col, string::size_type side);
 
 private:
 
